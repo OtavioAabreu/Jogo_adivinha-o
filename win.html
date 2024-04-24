@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/confetti.js"></script>
+  
+</head>
+<body>
+    <b>Você acertou !</b>
+    <figure>
+        <img src="img/winner.png" alt="">
+    </figure>
+</body>
+
+<style>
+     *{
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    body{
+        background-image: url("img/chamyto_2.png");
+        background-repeat: no-repeat;
+        background-position-x: -280px;
+        text-align: center;
+    }
+    b{
+        color: white;
+        font-size: 28px;
+        -webkit-text-stroke: 0.5px  black;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        text-shadow: 1px 2px 1px black;
+        position: relative;
+        top: 285px;
+    }
+    figure{
+        width: 215px;
+        height: 185px;
+        position: relative;
+        left: 40px;
+        top: 350px;
+    }
+    figure img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+    @media screen and (min-width: 1080px) {
+        body{
+            background-image: url(./img/chamyto.png);
+            background-size: cover;
+            background-position-x: 0px;
+            background-position-y: -70px;
+        } 
+        figure{
+            position: relative;
+            left: 40%;
+        }
+    }
+</style>
+
+<script>
+    function redirecionarParaOutraPagina(url) {
+  setTimeout(function() {
+   
+    window.location.href = url;
+  }, 4000)
+}
+redirecionarParaOutraPagina("mobile3.html");
+
+const start = () => {
+            setTimeout(function() {
+                confetti.start()
+            }, 100); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+        };
+
+        //  Stop
+
+        const stop = () => {
+            setTimeout(function() {
+                confetti.stop()
+            }, 3800); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+        };
+
+        start();
+        stop();
+
+start();
+stop();
+</script>
+</body>
+</html>

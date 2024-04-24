@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <b>Game Over <br> 😭</b>
+</body>
+<style>
+     body{
+        background-image: url("img/chamyto_2.png");
+        background-repeat: no-repeat;
+        background-position-x: -280px;
+        text-align: center;
+    }
+    @media screen and (min-width: 1080px) {
+        body{
+            background-image: url(./img/chamyto.png);
+            background-size: cover;
+            background-position-x: 0px;
+            background-position-y: -70px;
+        } 
+    }
+    b{
+        color: white;
+        font-size: 28px;
+        -webkit-text-stroke: 0.5px  black;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        text-shadow: 1px 2px 1px black;
+        position: relative;
+        top: 285px;
+    }
+</style>
+
+<script>
+    function redirecionarParaOutraPagina(url) {
+  setTimeout(function() {
+   
+    window.location.href = url;
+  }, 4000)
+}
+redirecionarParaOutraPagina("mobile3.html");
+</script>
+</html>

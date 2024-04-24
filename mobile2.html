@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogPage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="js/logica.js"></script>
+</head>
+<body>
+    <section>
+        <div id="cadastroInvalido" style="display: none;">
+            <i class="bi bi-x-circle"></i>
+            <b>Email ou Senha inválidos</b>
+        </div>
+        <div id="cadastroRealizado" style="display: none;">
+            <i class="bi bi-check-circle"></i>
+            <b>Cadastro realizado com sucesso</b>
+        </div>
+        <p class="sing">Sing in</p>
+        <form id="cadastroForm">
+                <input type="email" id="cadastroEmail" required placeholder="Email" autocomplete="off"><br>
+                <input type="password" id="cadastroSenha" required placeholder="Senha"><br>
+                <input type="number" id="cadastroIdade" required Idade placeholder="Idade"><br>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <div class="barra">
+            <p class="interval">Or</p>
+        </div>
+        <p class="log">Create your acount</p>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" required placeholder="Email" autocomplete="off"><br>
+            <input type="password" id="loginSenha" required placeholder="Senha"><br>
+        <button type="submit">Login</button>
+    </form>
+    </section>
+    
+</body>
+<style>
+    body{
+        background-color: #0059AB;
+        display: flex;
+        justify-content: center;
+    }
+    section{
+        text-align: center;
+        color: white;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 22px;
+    }
+    @keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0; 
+    }
+    to {
+        transform: translateY(0%);
+        opacity: 1; 
+    }
+}
+
+#cadastroInvalido, #cadastroRealizado {
+    display: flex;
+    width: 350px;
+    height: 55px;
+    border: none;
+    border-radius: 12px;
+    position: absolute;
+    margin-top: 19px;
+    z-index: 1000;
+    left: 18px;
+    background-color: #f9ecec;
+    color: rgb(67, 67, 67);
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    -webkit-box-shadow: -2px 3px 12px 2px rgb(63, 63, 63);
+    -moz-box-shadow: -2px 3px 12px 2px rgb(63, 63, 63);
+    box-shadow: -2px 3px 12px 2px rgb(63, 63, 63);
+    animation: slideIn 0.5s ease-in-out;
+}
+#cadastroRealizado {
+    background-color: #ecf9ee;
+}
+#cadastroRealizado .bi{
+    color: green;
+    font-size: 24px;
+    -webkit-text-stroke: 1px;
+    left: -10px !important;
+    position: relative;
+    top: 15px !important;
+}
+#cadastroInvalido .bi{
+    color: rgb(182, 15, 48);
+    font-size: 24px;
+    -webkit-text-stroke: 1px;
+    left: -30px !important;
+    position: relative;
+    top: 15px !important;
+}
+
+#cadastroInvalido b {
+    margin-left: 20px;
+    position: relative;
+    top: 12px !important;
+    left: -25px !important;
+}
+#cadastroRealizado b{
+    margin-left: 20px;
+    position: relative;
+    top: 12px !important;
+    left: -10px !important;
+}
+    section input {
+        width: 290px;
+        height: 38px;
+        margin-top: 25px;
+        border: 0.5px solid;
+        border-radius: 12px;
+        text-indent: 10px;
+    }
+    .sing{
+        margin-top: 15px;
+        margin-bottom: 10px !important;
+    }
+    #cadastroForm :nth-child(1){
+        margin-top: 8px;
+    }
+    #loginForm :nth-child(1){
+        margin-top: 10px;
+    }
+    .barra{
+        border: 1px solid white;
+        height: 0;
+        margin-top: 45px;
+    }
+    .interval{
+        position: relative;
+        top: -35px;
+        left: 120px;
+        width: 50px;
+        background-color: #0059AB;
+    }
+    .log{
+        margin-bottom: 10px !important;
+        margin-top: 35px;
+    }
+    section  button{
+        margin-top: 30px;
+        width: 290px;   
+        background-color: #233166;
+        border: none;
+        height: 55px;
+        border-radius: 12px;
+        color: white;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 20px;
+    }
+</style>
+
+<script>
+    // Função para cadastrar um usuário
+    document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+
+    const email = document.getElementById('cadastroEmail').value;
+    const senha = document.getElementById('cadastroSenha').value;
+    const idade = document.getElementById('cadastroIdade').value;
+
+    // Envia os dados para o servidor usando fetch
+    fetch('http://localhost:3000/cadastrar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, senha, idade })
+    })
+    .then(response => response.json())
+    .then(data => {
+        
+        var elon = document.getElementById("cadastroRealizado");
+        elon.style.display = "block";
+        document.getElementById('cadastroEmail').value = '';
+        document.getElementById('cadastroSenha').value = '';
+        document.getElementById('cadastroIdade').value = '';
+    })
+    .catch(error =>  {
+        error('Erro:', error);
+    });
+});
+
+    // Função para realizar login
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        const email = document.getElementById('loginEmail').value;
+        const senha = document.getElementById('loginSenha').value;
+
+        // Envia os dados para o servidor usando fetch
+        fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, senha })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.sucesso) {
+                window.location.href = 'mobile3.html';
+                document.getElementById('loginEmail').value = '';
+                document.getElementById('loginSenha').value = '';
+            } else {
+                var elon = document.getElementById("cadastroInvalido");
+                elon.style.display = "block";
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+        });
+    });
+
+    const cadastroInvalido = document.getElementById("cadastroInvalido");
+const cadastroRealizado = document.getElementById("cadastroRealizado");
+
+
+function hideDivs() {
+  cadastroInvalido.style.display = "none";
+  cadastroRealizado.style.display = "none";
+}
+
+
+document.body.addEventListener("click", function(event) {
+
+  if (cadastroInvalido.style.display !== "none" || cadastroRealizado.style.display !== "none") {
+   
+    if (!event.target.matches(".cadastro")) {
+      hideDivs();
+    }
+  }
+});
+</script>
+</html>
