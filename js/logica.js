@@ -4,10 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var palpiteInput = document.getElementById('palpiteInput');
     var enviarPalpiteBotao = document.getElementById('enviarPalpite');
+    var pega = document.getElementById("alerta");
     var tentativasRestantesDiv = document.getElementById("acertivasRestantes");
     
-    var tentativasMaximas = 10;
+    var tentativasMaximas = 8;
     var tentativasFeitas = 0;
+
     
     tentativasRestantesDiv.innerHTML = `Número de <br>  Tentativas: ${tentativasMaximas - tentativasFeitas}`;
 
@@ -16,12 +18,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     palpiteInput.addEventListener("keyup", function(event) {
-
         if (event.keyCode === 13) {
             verificarPalpite();
         }
     });
-   
+
     function verificarPalpite() {
         var palpiteUsuario = parseInt(palpiteInput.value);
 
@@ -61,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var pega = document.getElementById("ogl");
     var tentativasRestantesDiv = document.getElementById("tentativasRestantes");
     
-    var tentativasMaximas = 7;
+    var tentativasMaximas = 6;
     var tentativasFeitas = 0;
 
     
@@ -115,26 +116,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var palpiteInput = document.getElementById('abcInput');
     var enviarPalpiteBotao = document.getElementById('enviarAbc');
+    var pega = document.getElementById("abc");
     var tentativasRestantesDiv = document.getElementById("mentivasRestantes");
     
-    var tentativasMaximas = 4;
+    var tentativasMaximas = 5;
     var tentativasFeitas = 0;
 
     
     tentativasRestantesDiv.innerHTML = `Número de <br>  Tentativas: ${tentativasMaximas - tentativasFeitas}`;
 
-    
     enviarPalpiteBotao.addEventListener("click", function() {
         verificarPalpite();
     });
 
     palpiteInput.addEventListener("keyup", function(event) {
-
         if (event.keyCode === 13) {
             verificarPalpite();
         }
     });
-   
+
     function verificarPalpite() {
         var palpiteUsuario = parseInt(palpiteInput.value);
 
